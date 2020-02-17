@@ -1,0 +1,83 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<!-- Border to arrange elements-->
+<BorderPane
+        fx:controller="PaintApp.Logic.Controller"
+        xmlns:fx="http://javafx.com/fxml"
+        prefHeight="800" prefWidth="1000.0">
+
+    <!-- At the top-->
+    <top>
+        <!-- Arrange vertically-->
+        <VBox>
+            <!-- Menu bar-->
+            <MenuBar style="-fx-background-color: linear-gradient(to top,navajowhite,#804e49);-fx-text-fill: white;-fx-font-size: 20;-fx-font-weight: bold;-fx-highlight-text-fill: white" >
+                <!-- Menu elements-->
+                <Menu style="-fx-fill: white;-fx-text-fill: red;-fx-font-weight: bold" text ="Menu" >
+                    <MenuItem text="Open image " onAction="#openImage"/>
+                    <MenuItem text="Save image" onAction="#saveImage"/>
+                    <MenuItem text="Send image to server" onAction="#sendImageCloud"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Close Canvas" onAction="#exitApplication"/>
+                </Menu>
+            </MenuBar>
+            <!-- Make a toolbar at the top-->
+            <ToolBar style="-fx-background-color: linear-gradient(to top,#804e49,navajowhite);-fx-alignment: center" >
+                <!-- Make elements inside toolbar-->
+                <HBox alignment="CENTER" spacing="5">
+                    <!-- Make a toogle button inside an box that aligns elemnts horizontally-->
+                <ToggleButton fx:id="Drawing" text="Draw Tool" style="-fx-font-weight: bold;-fx-background-color: #804e49;-fx-effect: dropshadow(gaussian,darkslategrey,1,1,1,1);"  prefWidth="250" prefHeight="45" selected="true" />
+                </HBox>
+
+                <HBox alignment="TOP_RIGHT" spacing="8">
+                    <!-- Make a brush chooser inside an box that aligns elements horizontally-->
+                    <VBox>
+                        <!-- Wrap inside a Vbox to get elements to stack on top of eachother-->
+                    <Label text="Brush Type" alignment="CENTER" style="-fx-font-weight: bold; -fx-fill: black"/>
+                    <ComboBox fx:id="brushType" promptText="Brush" value="Round" style="-fx-background-color: #804e49; -fx-font-weight: bold">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value= "Rectangular" />
+                                <String fx:value="Round"/>
+                                <String fx:value="Circle"/>
+                                <String fx:value="Square"/>
+                                <String fx:value="Feather"/>
+                                <String fx:value="Rounded"/>
+                                <String fx:value="Coil"/>
+                                <String fx:value="Pie"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    </VBox>
+                    <VBox>
+                        <!-- Wrap inside a Vbox to get elements to stack on top of eachother-->
+                        <Label text="Color Palette" alignment="CENTER" style="-fx-font-weight: bold; -fx-fill: black"/>
+                    <ColorPicker fx:id="colorPicker" style="-fx-background-color: #804e49; -fx-font-weight: bold"/>
+                    </VBox>
+
+
+
+                    <VBox minHeight="50" alignment="CENTER">
+                        <!-- Wrap inside a Vbox to get elements to stack on top of eachother-->
+                        <Label fx:id="Text" text="Brush size" textAlignment="CENTER" style="-fx-font-weight: bold; -fx-fill: black" />
+                        <Slider fx:id="Slider" max="200"  value="20" snapToTicks="true" majorTickUnit="20" showTickMarks="true" showTickLabels="true" prefWidth="400" style="-fx-tick-label-fill: black;-fx-tick-mark-visible: true"/>
+                    </VBox>
+
+                    <HBox alignment="CENTER" spacing="5">
+                        <ToggleButton fx:id="Eraser" text="Eraser" style="-fx-font-weight: bold;-fx-background-color: #804e49;-fx-effect: dropshadow(gaussian,darkslategrey,1,1,1,1)" prefWidth="250" prefHeight="45" selected="false"/>
+                    </HBox>
+
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- Canvas in center with dimension 800*1200-->
+    <center>
+        <Canvas fx:id="canvas" width="1200" height="800" />
+    </center>
+</BorderPane>

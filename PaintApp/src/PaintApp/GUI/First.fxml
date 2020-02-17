@@ -1,0 +1,40 @@
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.chart.LineChart?>
+<!-- AnchorPane to arrange elements inside "freehand"-->
+<AnchorPane
+        style="-fx-background-color: linear-gradient(to top,#804e49,#2f2504);"
+        fx:controller="PaintApp.Logic.ControllerFirst"
+        xmlns:fx="http://javafx.com/fxml"
+        prefHeight="300.0" prefWidth="375.0">
+
+    <!-- Display an logo image-->
+    <ImageView fx:id="Bob" AnchorPane.rightAnchor="17" AnchorPane.topAnchor="20">
+        <image>
+            <Image url="/logo2.png" />
+        </image>
+    </ImageView>
+
+    <!-- Button to make a new image-->
+    <Button fx:id="New" style="-fx-border-width: 0.5;
+    -fx-border-color: darkslategray;-fx-background-color: linear-gradient(to top,darkslategrey,#2f2504);
+    -fx-text-fill: #7aa095;-fx-font-weight: bold;-fx-font-family: 'Helvetica';-fx-font-size: 18 "
+            text="New Canvas" onAction="#newImage" AnchorPane.leftAnchor="100" AnchorPane.rightAnchor="90"
+            AnchorPane.topAnchor="150" AnchorPane.bottomAnchor="105"/>
+
+    <!-- Button to exit application-->
+    <Button fx:id="Exit" style="-fx-border-width: 0.5;-fx-border-color: darkslategray;
+    -fx-background-color: linear-gradient(to top,darkslategrey,#2f2504);-fx-text-fill: #7aa095;
+    -fx-font-weight: bold;-fx-font-family: 'Helvetica';-fx-font-size: 18 "
+            text="Exit Application" onAction="#exitApp" AnchorPane.leftAnchor="100" AnchorPane.rightAnchor="90"
+            AnchorPane.bottomAnchor="43" AnchorPane.topAnchor="210"/>
+
+</AnchorPane>
